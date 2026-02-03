@@ -7,6 +7,7 @@ import { UserService } from '../../core/service/user.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Login } from '../../core/models/Login';
 import { AuthService } from '../../core/service/auth.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   private router = inject(Router);
   public errorMessage: string | null = null;
+  public loading: boolean = false;
 
   loginForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
@@ -35,9 +37,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
+
     if (this.loginForm.invalid) {
       return;
     }
+
+    this.loading = true;
 
     const credentials: Login = {
       login: this.loginForm.get('login')?.value,
@@ -46,7 +51,12 @@ export class LoginComponent implements OnInit {
 
     this.userService
       .login(credentials)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => {
+          this.loading = false;
+        }),
+      )
       .subscribe({
         // NoError function
         next: (res) => {
