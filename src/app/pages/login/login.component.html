@@ -13,6 +13,12 @@
           formControlName="login"
         />
       </div>
+      <div
+        class="text-danger"
+        *ngIf="submitted && loginForm.get('login')?.hasError('required')"
+      >
+        Login requis
+      </div>
 
       <div class="form-group">
         <label for="password">Password</label>
@@ -24,11 +30,20 @@
           formControlName="password"
         />
       </div>
+      <div
+        class="text-danger"
+        *ngIf="submitted && loginForm.get('password')?.hasError('required')"
+      >
+        Mot de passe requis
+      </div>
 
+      <div class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary mr-1">Login</button>
 
-        <button type="reset" class="btn btn-secondary">Cancel</button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">
+          Cancel
+        </button>
       </div>
     </form>
   </div>

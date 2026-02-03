@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../core/service/user.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Login } from '../../core/models/Login';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,12 @@ import { Login } from '../../core/models/Login';
 })
 export class LoginComponent implements OnInit {
   private userService = inject(UserService);
+  private AuthService = inject(AuthService);
   private formBuilder = inject(FormBuilder);
   private destroyRef = inject(DestroyRef);
   private router = inject(Router);
+  public errorMessage: string | null = null;
+
   loginForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
 
@@ -27,12 +31,6 @@ export class LoginComponent implements OnInit {
       login: ['', Validators.required],
       password: ['', Validators.required],
     });
-
-    this.logInfo();
-  }
-
-  logInfo(): void {
-    console.log(this.loginForm.value);
   }
 
   onSubmit(): void {
@@ -51,13 +49,20 @@ export class LoginComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         // NoError function
-        next: () => {
+        next: (res) => {
+          this.AuthService.setToken(res.token);
           this.router.navigate(['/']);
         },
         // Handle Error
-        error: () => {
-          alert('LOGIN FAILED!! :-(');
+        error: (err) => {
+          this.errorMessage = err.error.message;
         },
       });
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.loginForm.reset();
+    this.errorMessage = null;
   }
 }
