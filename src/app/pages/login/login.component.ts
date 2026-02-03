@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MaterialModule } from '../../shared/material.module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../core/service/user.service';
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   private userService = inject(UserService);
   private formBuilder = inject(FormBuilder);
   private destroyRef = inject(DestroyRef);
+  private router = inject(Router);
   loginForm: FormGroup = new FormGroup({});
   submitted: boolean = false;
 
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         // NoError function
         next: () => {
-          alert('LOGIN SUCCESS!! :-)');
+          this.router.navigate(['/']);
         },
         // Handle Error
         error: () => {
