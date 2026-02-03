@@ -2,7 +2,7 @@
   <h5 class="card-header">Login</h5>
 
   <div class="card-body">
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="login">Login</label>
         <input
@@ -10,6 +10,7 @@
           id="login"
           class="form-control"
           placeholder="Enter your login"
+          formControlName="login"
         />
       </div>
 
@@ -20,6 +21,7 @@
           id="password"
           class="form-control"
           placeholder="Enter your password"
+          formControlName="password"
         />
       </div>
 

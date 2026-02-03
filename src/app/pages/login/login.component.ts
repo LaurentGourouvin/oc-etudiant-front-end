@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { MaterialModule } from '../../shared/material.module';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../core/service/user.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Login } from '../../core/models/Login';
 
 @Component({
   selector: 'app-login',
@@ -9,4 +13,49 @@ import { MaterialModule } from '../../shared/material.module';
   standalone: true,
   styleUrl: './login.component.css',
 })
-export class LoginComponent {}
+export class LoginComponent implements OnInit {
+  private userService = inject(UserService);
+  private formBuilder = inject(FormBuilder);
+  private destroyRef = inject(DestroyRef);
+  loginForm: FormGroup = new FormGroup({});
+  submitted: boolean = false;
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+
+    this.logInfo();
+  }
+
+  logInfo(): void {
+    console.log(this.loginForm.value);
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    const credentials: Login = {
+      login: this.loginForm.get('login')?.value,
+      password: this.loginForm.get('password')?.value,
+    };
+
+    this.userService
+      .login(credentials)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        // NoError function
+        next: () => {
+          alert('LOGIN SUCCESS!! :-)');
+        },
+        // Handle Error
+        error: () => {
+          alert('LOGIN FAILED!! :-(');
+        },
+      });
+  }
+}
