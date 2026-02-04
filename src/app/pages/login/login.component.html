@@ -1,0 +1,57 @@
+<div class="card m-3">
+  <h5 class="card-header">Login</h5>
+
+  <div class="card-body">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="login">Login</label>
+        <input
+          type="text"
+          id="login"
+          class="form-control"
+          placeholder="Enter your login"
+          formControlName="login"
+        />
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="submitted && loginForm.get('login')?.hasError('required')"
+      >
+        Login requis
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Enter your password"
+          formControlName="password"
+        />
+      </div>
+      <div
+        class="text-danger"
+        *ngIf="submitted && loginForm.get('password')?.hasError('required')"
+      >
+        Mot de passe requis
+      </div>
+
+      <div class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mr-1" [disabled]="loading">
+          {{ loading ? "Loading..." : "Login" }}
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onReset()"
+          [disabled]="loading"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
