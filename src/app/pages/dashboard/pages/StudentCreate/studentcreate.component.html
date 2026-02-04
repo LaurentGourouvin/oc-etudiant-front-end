@@ -1,0 +1,53 @@
+<div class="card">
+  <h5 class="card-header">Informations pour la création d'un étudiant</h5>
+
+  <div class="card-body">
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label for="firstName">Prénom</label>
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          placeholder="Ex: Minji"
+          formControlName="firstName"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="lastName">Nom</label>
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          placeholder="Ex: Kim"
+          formControlName="lastName"
+        />
+      </div>
+
+      <div class="form-group mb-4">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          placeholder="ex: minji.kim@mail.com"
+          formControlName="email"
+        />
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button
+          type="button"
+          (click)="onReset()"
+          class="btn btn-secondary mr-2"
+        >
+          Annuler
+        </button>
+
+        <button type="submit" class="btn btn-primary">Créer</button>
+      </div>
+    </form>
+    <div class="text-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+</div>

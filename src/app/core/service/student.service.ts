@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Student } from '../models/Student';
+import { StudentRegister } from '../models/StudentRegister';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,12 @@ export class StudentService {
 
   getAllStudents(): Observable<Student[]> {
     return this.httpClient.get<Student[]>('/api/student', {
+      headers: { Authorization: 'Bearer ' + this.authService.getToken() },
+    });
+  }
+
+  createStudent(student: StudentRegister): Observable<Student> {
+    return this.httpClient.post<Student>('/api/student', student, {
       headers: { Authorization: 'Bearer ' + this.authService.getToken() },
     });
   }
