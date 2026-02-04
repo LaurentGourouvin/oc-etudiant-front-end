@@ -1,0 +1,36 @@
+<div class="container m-3 mx-auto">
+  <div class="card mb-3">
+    <h5 class="card-header">Dashboard</h5>
+    <div class="card-body">
+      <p class="mb-0">Gestion des étudiants</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-lg-3 mb-3">
+      <a href="#" class="text-decoration-none text-dark">
+        <div class="card h-100">
+          <h5 class="card-header">Ajouter un étudiant</h5>
+          <div class="card-body">
+            <p class="mb-0">Créer une nouvelle fiche étudiant.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3 mb-3">
+      <a routerLink="student-list" class="text-decoration-none text-dark">
+        <div class="card h-100">
+          <h5 class="card-header">Liste des étudiants</h5>
+          <div class="card-body">
+            <p class="mb-0">Afficher tous les étudiants.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
