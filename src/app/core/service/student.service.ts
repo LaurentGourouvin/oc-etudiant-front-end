@@ -20,8 +20,8 @@ export class StudentService {
     });
   }
 
-  createStudent(student: StudentRegister): Observable<Student> {
-    return this.httpClient.post<Student>('/api/student', student, {
+  createStudent(student: StudentRegister): Observable<Object> {
+    return this.httpClient.post<Object>('/api/student', student, {
       headers: { Authorization: 'Bearer ' + this.authService.getToken() },
     });
   }
