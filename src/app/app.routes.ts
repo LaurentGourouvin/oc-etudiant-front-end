@@ -28,14 +28,17 @@ export const routes: Routes = [
       {
         path: '',
         component: StudentCreateComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'student-list',
         component: StudentlistComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'student-create',
         component: StudentCreateComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },

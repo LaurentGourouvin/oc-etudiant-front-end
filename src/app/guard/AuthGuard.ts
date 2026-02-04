@@ -7,6 +7,7 @@ export const AuthGuard = () => {
   const router = inject(Router);
 
   if (!auth.isAuthenticated()) {
+    alert('Vous avez été déconnecté. Veuillez vous reconnecter.');
     router.navigateByUrl('/login');
     return false;
   }
