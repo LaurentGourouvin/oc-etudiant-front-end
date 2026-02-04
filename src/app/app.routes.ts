@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './guard/AuthGuard';
+import { StudentlistComponent } from './pages/dashboard/pages/StudentList/studentlist.component';
 
 export const routes: Routes = [
   {
@@ -22,5 +23,11 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'student-list',
+        component: StudentlistComponent,
+      },
+    ],
   },
 ];

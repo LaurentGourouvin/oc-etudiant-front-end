@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
         // NoError function
         next: (res) => {
           this.AuthService.setToken(res.token);
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
         },
         // Handle Error
         error: (err) => {
