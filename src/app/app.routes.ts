@@ -6,6 +6,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './guard/AuthGuard';
 import { StudentlistComponent } from './pages/dashboard/pages/StudentList/studentlist.component';
 import { StudentCreateComponent } from './pages/dashboard/pages/StudentCreate/studentcreate.component';
+import { StudentDetailComponent } from './pages/dashboard/pages/StudentDetail/studentdetail.component';
 
 export const routes: Routes = [
   {
@@ -40,6 +41,21 @@ export const routes: Routes = [
         component: StudentCreateComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: 'student/:id/detail',
+        component: StudentDetailComponent,
+        canActivate: [AuthGuard],
+      },
+      // {
+      //   path: 'student-delete/:id',
+      //   component: StudentDeleteComponent,
+      //   canActivate: [AuthGuard],
+      // },
+      // {
+      //   path: 'student-edit/:id',
+      //   component: StudentCreateComponent,
+      //   canActivate: [AuthGuard],
+      // }
     ],
   },
 ];

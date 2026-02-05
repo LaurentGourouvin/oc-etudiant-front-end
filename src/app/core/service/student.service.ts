@@ -20,6 +20,12 @@ export class StudentService {
     });
   }
 
+  getStudentById(studentId: number): Observable<Student> {
+    return this.httpClient.get<Student>(`/api/student/${studentId}`, {
+      headers: { Authorization: 'Bearer ' + this.authService.getToken() },
+    });
+  }
+
   createStudent(student: StudentRegister): Observable<Object> {
     return this.httpClient.post<Object>('/api/student', student, {
       headers: { Authorization: 'Bearer ' + this.authService.getToken() },

@@ -31,7 +31,12 @@
             <td>{{ student.lastName }}</td>
             <td>{{ student.email }}</td>
             <td class="text-center">
-              <button class="btn btn-sm btn-info mr-1">Détail</button>
+              <button
+                class="btn btn-sm btn-info mr-1"
+                (click)="viewStudent(student.id)"
+              >
+                Détail
+              </button>
             </td>
           </tr>
         </tbody>
