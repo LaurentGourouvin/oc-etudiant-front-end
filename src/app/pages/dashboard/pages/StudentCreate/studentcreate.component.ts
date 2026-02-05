@@ -51,10 +51,13 @@ export class StudentCreateComponent implements OnInit {
           this.router.navigate(['/dashboard/student-list']);
         },
         error: (error) => {
-          this.errorMessage = 'Failed to create student.';
           if (error.status === 401) {
+            alert('Vous avez été déconnecté. Veuillez vous reconnecter.');
             this.router.navigate(['/login']);
+            return;
           }
+
+          this.errorMessage = "Erreur durant la création de l'étudiant.";
         },
       });
   }

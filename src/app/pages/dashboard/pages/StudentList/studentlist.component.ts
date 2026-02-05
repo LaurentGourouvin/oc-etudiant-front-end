@@ -18,6 +18,11 @@ export class StudentlistComponent {
 
   students$ = this.studentService.getAllStudents().pipe(
     catchError((err) => {
+      if (err.status === 401) {
+        alert('Vous avez été déconnecté. Veuillez vous reconnecter.');
+        this.router.navigate(['/login']);
+        return of([]);
+      }
       this.errorMessage = 'Erreur chargement';
       return of([]);
     }),
