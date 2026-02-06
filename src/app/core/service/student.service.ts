@@ -31,4 +31,10 @@ export class StudentService {
       headers: { Authorization: 'Bearer ' + this.authService.getToken() },
     });
   }
+
+  deleteStudent(studentId: number): Observable<Object> {
+    return this.httpClient.delete(`/api/student/${studentId}`, {
+      headers: { Authorization: 'Bearer ' + this.authService.getToken() },
+    });
+  }
 }

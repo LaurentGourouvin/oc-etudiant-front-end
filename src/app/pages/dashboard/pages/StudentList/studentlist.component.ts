@@ -32,4 +32,8 @@ export class StudentlistComponent {
   viewStudent(studentId: number): void {
     this.router.navigate(['/dashboard/student', studentId, 'detail']);
   }
+
+  viewDeleteStudent(studentId: number): void {
+    this.router.navigate(['/dashboard/student', studentId, 'delete']);
+  }
 }
