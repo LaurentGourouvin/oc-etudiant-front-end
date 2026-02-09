@@ -49,4 +49,10 @@ export class StudentDetailComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['/dashboard/student-list']);
   }
+
+  goUpdateView(): void {
+    if (this.studentId !== null) {
+      this.router.navigate([`/dashboard/student/${this.studentId}/update`]);
+    }
+  }
 }

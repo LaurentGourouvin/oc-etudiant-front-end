@@ -4,7 +4,6 @@ import { MaterialModule } from '../../../../shared/material.module';
 import { StudentService } from '../../../../core/service/student.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentRegister } from '../../../../core/models/StudentRegister';
-import { take, takeUntil } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 

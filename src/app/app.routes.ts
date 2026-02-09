@@ -8,6 +8,7 @@ import { StudentlistComponent } from './pages/dashboard/pages/StudentList/studen
 import { StudentCreateComponent } from './pages/dashboard/pages/StudentCreate/studentcreate.component';
 import { StudentDetailComponent } from './pages/dashboard/pages/StudentDetail/studentdetail.component';
 import { StudentDeleteComponent } from './pages/dashboard/pages/StudentDelete/studentdelete.component';
+import { StudentUpdateComponent } from './pages/dashboard/pages/StudentUpdate/studentupdate.component';
 
 export const routes: Routes = [
   {
@@ -52,11 +53,11 @@ export const routes: Routes = [
         component: StudentDeleteComponent,
         canActivate: [AuthGuard],
       },
-      // {
-      //   path: 'student-edit/:id',
-      //   component: StudentCreateComponent,
-      //   canActivate: [AuthGuard],
-      // }
+      {
+        path: 'student/:id/update',
+        component: StudentUpdateComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];
