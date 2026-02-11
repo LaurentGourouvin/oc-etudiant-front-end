@@ -27,7 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { RouterModule } from '@angular/router';
 
 const materialModules = [
   ReactiveFormsModule,
@@ -57,15 +57,12 @@ const materialModules = [
   MatButtonToggleModule,
   MatTreeModule,
   OverlayModule,
-  PortalModule
+  PortalModule,
+  RouterModule,
 ];
 
 @NgModule({
-  imports: [
-    ...materialModules
-  ],
-  exports: [
-    ...materialModules
-  ],
+  imports: [...materialModules],
+  exports: [...materialModules],
 })
-export class MaterialModule { }
+export class MaterialModule {}

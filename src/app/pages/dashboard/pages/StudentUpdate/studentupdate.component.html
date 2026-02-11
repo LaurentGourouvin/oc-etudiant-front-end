@@ -1,0 +1,100 @@
+<div class="card">
+  <h5 class="card-header">Modification d'un étudiant</h5>
+
+  <div class="card-body">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label for="firstName">Prénom</label>
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          placeholder="Ex: Minji"
+          formControlName="firstName"
+        />
+        <div
+          *ngIf="
+            updateForm.get('firstName')?.touched &&
+            updateForm.get('firstName')?.invalid
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="updateForm.get('firstName')?.errors?.['required']"
+          >
+            Le prénom est obligatoire
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="lastName">Nom</label>
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          placeholder="Ex: Kim"
+          formControlName="lastName"
+        />
+        <div
+          *ngIf="
+            updateForm.get('lastName')?.touched &&
+            updateForm.get('lastName')?.invalid
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="updateForm.get('lastName')?.errors?.['required']"
+          >
+            Le nom est obligatoire
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group mb-4">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          placeholder="ex: minji.kim@mail.com"
+          formControlName="email"
+        />
+
+        <div
+          *ngIf="
+            updateForm.get('email')?.touched && updateForm.get('email')?.invalid
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="updateForm.get('email')?.errors?.['required']"
+          >
+            L’email est obligatoire
+          </small>
+
+          <small
+            class="text-danger"
+            *ngIf="updateForm.get('email')?.errors?.['email']"
+          >
+            Format d’email invalide
+          </small>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn btn-secondary mr-2"
+          (click)="onReset()"
+        >
+          Annuler
+        </button>
+
+        <button type="submit" class="btn btn-primary">
+          Appliquer les modifications
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
