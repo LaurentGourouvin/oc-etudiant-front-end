@@ -37,4 +37,13 @@ export class StudentService {
       headers: { Authorization: 'Bearer ' + this.authService.getToken() },
     });
   }
+
+  updateStudent(
+    studentId: number,
+    student: StudentRegister,
+  ): Observable<Object> {
+    return this.httpClient.put(`/api/student/${studentId}`, student, {
+      headers: { Authorization: 'Bearer ' + this.authService.getToken() },
+    });
+  }
 }

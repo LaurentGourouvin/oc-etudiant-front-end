@@ -25,12 +25,13 @@ export class StudentCreateComponent implements OnInit {
     this.studentForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
   onSubmit(): void {
     if (this.studentForm.invalid) {
+      this.studentForm.markAllAsTouched();
       return;
     }
 
