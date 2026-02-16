@@ -8,12 +8,13 @@
           <input
             type="text"
             formControlName="firstName"
+            data-cy="register-firstName"
             class="form-control"
             [ngClass]="{ 'is-invalid': submitted && form['firstName'].errors }"
           />
-          @if (submitted && form['firstName'].errors) {
-            <div class="invalid-feedback">
-              @if (form['firstName'].errors?.['required']) {
+          @if (submitted && form["firstName"].errors) {
+            <div class="invalid-feedback" data-cy="register-firstName-required">
+              @if (form["firstName"].errors?.["required"]) {
                 <div>First Name is required</div>
               }
             </div>
@@ -24,12 +25,13 @@
           <input
             type="text"
             formControlName="lastName"
+            data-cy="register-lastName"
             class="form-control"
             [ngClass]="{ 'is-invalid': submitted && form['lastName'].errors }"
           />
-          @if (submitted && form['lastName'].errors) {
-            <div class="invalid-feedback">
-              @if (form['lastName'].errors?.['required']) {
+          @if (submitted && form["lastName"].errors) {
+            <div class="invalid-feedback" data-cy="register-lastName-required">
+              @if (form["lastName"].errors?.["required"]) {
                 <div>Last Name is required</div>
               }
             </div>
@@ -41,12 +43,13 @@
         <input
           type="text"
           formControlName="login"
+          data-cy="register-login"
           class="form-control"
           [ngClass]="{ 'is-invalid': submitted && form['login'].errors }"
         />
-        @if (submitted && form['login'].errors) {
-          <div class="invalid-feedback">
-            @if (form['login'].errors?.['required']) {
+        @if (submitted && form["login"].errors) {
+          <div class="invalid-feedback" data-cy="register-login-required">
+            @if (form["login"].errors?.["required"]) {
               <div>Login is required</div>
             }
           </div>
@@ -58,20 +61,28 @@
         <input
           type="text"
           formControlName="password"
+          data-cy="register-password"
           class="form-control"
           [ngClass]="{ 'is-invalid': submitted && form['password'].errors }"
         />
-        @if (submitted && form['password'].errors) {
-          <div class="invalid-feedback">
-            @if (form['password'].errors?.['required']) {
+        @if (submitted && form["password"].errors) {
+          <div class="invalid-feedback" data-cy="register-password-required">
+            @if (form["password"].errors?.["required"]) {
               <div>password is required</div>
             }
           </div>
         }
       </div>
       <div class="text-center">
-        <button class="btn btn-primary mr-1">Register</button>
-        <button class="btn btn-secondary" type="reset" (click)="onReset()">
+        <button class="btn btn-primary mr-1" data-cy="register-submit">
+          Register
+        </button>
+        <button
+          class="btn btn-secondary"
+          type="reset"
+          (click)="onReset()"
+          data-cy="register-cancel"
+        >
           Cancel
         </button>
       </div>

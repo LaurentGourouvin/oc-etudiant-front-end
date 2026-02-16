@@ -88,6 +88,14 @@
         </div>
       </div>
 
+      <div
+        class="text-danger mt-3"
+        *ngIf="errorMessage"
+        data-cy="student-update-api-error"
+      >
+        {{ errorMessage }}
+      </div>
+
       <div class="d-flex justify-content-end">
         <button
           type="button"

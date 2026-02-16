@@ -1,4 +1,6 @@
 import { defineConfig } from 'cypress';
+import registerCodeCoverageTasks from '@cypress/code-coverage/task';
+import fs from 'fs';
 
 export default defineConfig({
   allowCypressEnv: false,
@@ -9,7 +11,18 @@ export default defineConfig({
     viewportHeight: 720,
 
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      registerCodeCoverageTasks(on, config);
+
+      on('task', {
+        ensureDirectoryExists(dirPath: string) {
+          if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true });
+          }
+          return null;
+        },
+      });
+
+      return config;
     },
   },
 });

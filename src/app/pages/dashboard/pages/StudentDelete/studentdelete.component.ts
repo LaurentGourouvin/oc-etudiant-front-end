@@ -69,4 +69,10 @@ export class StudentDeleteComponent implements OnInit {
         },
       });
   }
+
+  onCancel(): void {
+    if (this.studentId) {
+      this.router.navigate(['/dashboard/student-list']);
+    }
+  }
 }

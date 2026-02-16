@@ -38,6 +38,14 @@
     <div class="d-flex justify-content-end">
       <button
         type="button"
+        class="btn btn-secondary mr-2"
+        (click)="onCancel()"
+        data-cy="student-delete-cancel"
+      >
+        Annuler
+      </button>
+      <button
+        type="button"
         class="btn btn-primary"
         (click)="deleteStudent(student.id)"
         data-cy="student-delete-confirm"
