@@ -1,7 +1,7 @@
 <div class="card">
   <h5 class="card-header">Suppression étudiant</h5>
 
-  <div class="card-body" *ngIf="errorMessage">
+  <div class="card-body" *ngIf="errorMessage" data-cy="student-delete-error">
     <p>{{ errorMessage }}</p>
   </div>
   <div class="card-body" *ngIf="student">
@@ -38,8 +38,17 @@
     <div class="d-flex justify-content-end">
       <button
         type="button"
+        class="btn btn-secondary mr-2"
+        (click)="onCancel()"
+        data-cy="student-delete-cancel"
+      >
+        Annuler
+      </button>
+      <button
+        type="button"
         class="btn btn-primary"
         (click)="deleteStudent(student.id)"
+        data-cy="student-delete-confirm"
       >
         Confirmer la suppression
       </button>
