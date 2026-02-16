@@ -11,6 +11,7 @@
           class="form-control"
           placeholder="Ex: Minji"
           formControlName="firstName"
+          data-cy="student-firstName"
         />
         <div
           *ngIf="
@@ -35,6 +36,7 @@
           class="form-control"
           placeholder="Ex: Kim"
           formControlName="lastName"
+          data-cy="student-lastName"
         />
         <div
           *ngIf="
@@ -59,6 +61,7 @@
           class="form-control"
           placeholder="ex: minji.kim@mail.com"
           formControlName="email"
+          data-cy="student-email"
         />
         <div
           *ngIf="
@@ -91,7 +94,13 @@
           Annuler
         </button>
 
-        <button type="submit" class="btn btn-primary">Créer</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          data-cy="student-create-submit"
+        >
+          Créer
+        </button>
       </div>
     </form>
     <div class="text-danger mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>

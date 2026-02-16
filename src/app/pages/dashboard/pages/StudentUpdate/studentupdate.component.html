@@ -11,12 +11,14 @@
           class="form-control"
           placeholder="Ex: Minji"
           formControlName="firstName"
+          data-cy="student-update-firstName"
         />
         <div
           *ngIf="
             updateForm.get('firstName')?.touched &&
             updateForm.get('firstName')?.invalid
           "
+          data-cy="student-update-error"
         >
           <small
             class="text-danger"
@@ -35,12 +37,14 @@
           class="form-control"
           placeholder="Ex: Kim"
           formControlName="lastName"
+          data-cy="student-update-lastName"
         />
         <div
           *ngIf="
             updateForm.get('lastName')?.touched &&
             updateForm.get('lastName')?.invalid
           "
+          data-cy="student-update-error"
         >
           <small
             class="text-danger"
@@ -59,12 +63,14 @@
           class="form-control"
           placeholder="ex: minji.kim@mail.com"
           formControlName="email"
+          data-cy="student-update-email"
         />
 
         <div
           *ngIf="
             updateForm.get('email')?.touched && updateForm.get('email')?.invalid
           "
+          data-cy="student-update-error"
         >
           <small
             class="text-danger"
@@ -87,11 +93,16 @@
           type="button"
           class="btn btn-secondary mr-2"
           (click)="onReset()"
+          data-cy="student-update-cancel"
         >
           Annuler
         </button>
 
-        <button type="submit" class="btn btn-primary">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          data-cy="student-update-submit"
+        >
           Appliquer les modifications
         </button>
       </div>

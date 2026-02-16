@@ -1,10 +1,10 @@
 <div class="card">
   <h5 class="card-header">Fiche étudiant</h5>
 
-  <div class="card-body" *ngIf="errorMessage">
+  <div class="card-body" *ngIf="errorMessage" data-cy="student-detail-error">
     <p>{{ errorMessage }}</p>
   </div>
-  <div class="card-body" *ngIf="student">
+  <div class="card-body" *ngIf="student" data-cy="student-detail">
     <div class="row mb-3">
       <div class="col-sm-4 font-weight-bold">ID</div>
       <div class="col-sm-8">{{ student?.id }}</div>
@@ -36,10 +36,20 @@
     </div>
 
     <div class="d-flex justify-content-end">
-      <button type="button" (click)="goBack()" class="btn btn-secondary mr-2">
+      <button
+        type="button"
+        (click)="goBack()"
+        class="btn btn-secondary mr-2"
+        data-cy="student-detail-back"
+      >
         Retour
       </button>
-      <button type="button" class="btn btn-primary" (click)="goUpdateView()">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="goUpdateView()"
+        data-cy="student-detail-update"
+      >
         Modifier
       </button>
     </div>

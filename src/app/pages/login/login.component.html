@@ -11,11 +11,13 @@
           class="form-control"
           placeholder="Enter your login"
           formControlName="login"
+          data-cy="login-input"
         />
       </div>
       <div
         class="text-danger"
         *ngIf="submitted && loginForm.get('login')?.hasError('required')"
+        data-cy="login-required"
       >
         Login requis
       </div>
@@ -28,18 +30,27 @@
           class="form-control"
           placeholder="Enter your password"
           formControlName="password"
+          data-cy="password-input"
         />
       </div>
       <div
         class="text-danger"
         *ngIf="submitted && loginForm.get('password')?.hasError('required')"
+        data-cy="password-required"
       >
         Mot de passe requis
       </div>
 
-      <div class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="text-danger" *ngIf="errorMessage" data-cy="login-error">
+        {{ errorMessage }}
+      </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-primary mr-1" [disabled]="loading">
+        <button
+          type="submit"
+          class="btn btn-primary mr-1"
+          [disabled]="loading"
+          data-cy="login-submit"
+        >
           {{ loading ? "Loading..." : "Login" }}
         </button>
 
@@ -48,6 +59,7 @@
           class="btn btn-secondary"
           (click)="onReset()"
           [disabled]="loading"
+          data-cy="login-cancel"
         >
           Cancel
         </button>

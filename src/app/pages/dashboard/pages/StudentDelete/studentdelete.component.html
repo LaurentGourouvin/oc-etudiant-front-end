@@ -1,7 +1,7 @@
 <div class="card">
   <h5 class="card-header">Suppression étudiant</h5>
 
-  <div class="card-body" *ngIf="errorMessage">
+  <div class="card-body" *ngIf="errorMessage" data-cy="student-delete-error">
     <p>{{ errorMessage }}</p>
   </div>
   <div class="card-body" *ngIf="student">
@@ -40,6 +40,7 @@
         type="button"
         class="btn btn-primary"
         (click)="deleteStudent(student.id)"
+        data-cy="student-delete-confirm"
       >
         Confirmer la suppression
       </button>
